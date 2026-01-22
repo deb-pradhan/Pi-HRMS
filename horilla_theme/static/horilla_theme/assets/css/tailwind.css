@@ -1573,7 +1573,7 @@ video {
 
 .border-primary-600 {
     --tw-border-opacity: 1;
-    border-color: rgb(229 79 56/var(--tw-border-opacity))
+    border-color: rgb(37 99 235/var(--tw-border-opacity))
 }
 
 .border-white {
@@ -1731,7 +1731,7 @@ video {
 
 .bg-\[\#e54f38\] {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 79 56/var(--tw-bg-opacity))
+    background-color: rgb(37 99 235/var(--tw-bg-opacity))
 }
 
 .bg-\[\#ea7f2f2e\] {
@@ -1854,7 +1854,7 @@ video {
 
 .bg-primary-600 {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 79 56/var(--tw-bg-opacity))
+    background-color: rgb(37 99 235/var(--tw-bg-opacity))
 }
 
 .bg-secondary-50 {
@@ -2332,7 +2332,7 @@ video {
 
 .text-\[\#E54F38\] {
     --tw-text-opacity: 1;
-    color: rgb(229 79 56/var(--tw-text-opacity))
+    color: rgb(37 99 235/var(--tw-text-opacity))
 }
 
 .text-\[\#FF6A53\] {
@@ -2352,7 +2352,7 @@ video {
 
 .text-\[\#e54f38\] {
     --tw-text-opacity: 1;
-    color: rgb(229 79 56/var(--tw-text-opacity))
+    color: rgb(37 99 235/var(--tw-text-opacity))
 }
 
 .text-\[\#ff8c00\] {
@@ -2427,7 +2427,7 @@ video {
 
 .text-primary-600 {
     --tw-text-opacity: 1;
-    color: rgb(229 79 56/var(--tw-text-opacity))
+    color: rgb(37 99 235/var(--tw-text-opacity))
 }
 
 .text-red-500 {
@@ -2697,7 +2697,7 @@ video {
 
 .hover\:border-primary-600:hover {
     --tw-border-opacity: 1;
-    border-color: rgb(229 79 56/var(--tw-border-opacity))
+    border-color: rgb(37 99 235/var(--tw-border-opacity))
 }
 
 .hover\:bg-gray-100:hover {
@@ -2712,7 +2712,7 @@ video {
 
 .hover\:bg-primary-600:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 79 56/var(--tw-bg-opacity))
+    background-color: rgb(37 99 235/var(--tw-bg-opacity))
 }
 
 .hover\:bg-primary-700:hover {
@@ -2727,7 +2727,7 @@ video {
 
 .hover\:bg-secondary-600:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 79 56/var(--tw-bg-opacity))
+    background-color: rgb(37 99 235/var(--tw-bg-opacity))
 }
 
 .hover\:text-\[\#ac3b2a\]:hover {
@@ -2737,7 +2737,7 @@ video {
 
 .hover\:text-primary-600:hover {
     --tw-text-opacity: 1;
-    color: rgb(229 79 56/var(--tw-text-opacity))
+    color: rgb(37 99 235/var(--tw-text-opacity))
 }
 
 .hover\:text-red-500:hover {
@@ -2761,7 +2761,7 @@ video {
 
 .focus\:border-primary-600:focus {
     --tw-border-opacity: 1;
-    border-color: rgb(229 79 56/var(--tw-border-opacity))
+    border-color: rgb(37 99 235/var(--tw-border-opacity))
 }
 
 .focus\:outline-none:focus {
@@ -2805,7 +2805,7 @@ video {
 
 .peer:checked~.peer-checked\:bg-\[\#e54f38\] {
     --tw-bg-opacity: 1;
-    background-color: rgb(229 79 56/var(--tw-bg-opacity))
+    background-color: rgb(37 99 235/var(--tw-bg-opacity))
 }
 
 .peer:checked~.peer-checked\:after\:translate-x-4:after {

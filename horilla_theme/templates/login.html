@@ -32,6 +32,7 @@
             href="/static/horilla_theme/assets/css/v1_styles.css"
         />
         <script src="{% static "horilla_theme/assets/js/tailwindcdn.js" %}"></script>
+        <script src="{% static "horilla_theme/assets/js/tailwind.config.js" %}"></script>
         <script src="{% static '/jquery/jquery.min.js' %}"></script>
     </head>
 
@@ -49,10 +50,10 @@
                 class="bg-[white] p-[50px] rounded-md [box-shadow:0px_0px_20px_#ebebeb] w-[450px]"
             >
                 <img
-                    src="{% if white_label_company.icon %}{{white_label_company.icon.url}}{% else %}{% static 'horilla_theme/assets/img/logo.svg' %}{% endif %}"
-                    alt=""
+                    src="{% if white_label_company.icon %}{{white_label_company.icon.url}}{% else %}{% static 'horilla_theme/assets/img/logo.png' %}{% endif %}"
+                    alt="Pi Foundation Logo"
                     class="m-auto mb-4"
-                    width="80"
+                    width="120"
                 />
                 <h1 class="text-3xl font-bold mb-2 text-center">
                     {% trans "Welcome to" %} {{white_label_company_name}} {% trans "HR" %}

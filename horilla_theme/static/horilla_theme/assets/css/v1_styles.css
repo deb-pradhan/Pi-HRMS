@@ -1669,7 +1669,7 @@ input[type="file"] {
     border: unset;
     border-radius: 5px;
     font-size: 13px;
-    color: #e54f38;
+    color: #2563eb;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -2323,7 +2323,7 @@ ul.errorlist ul.errorlist li {
     font-family: "Font Awesome 6 Free";
     font-weight: 600;
     font-size: 12px;
-    color: #e54f38;
+    color: #2563eb;
     position: absolute;
     left: 0;
 }
@@ -2368,7 +2368,7 @@ ul.errorlist ul.errorlist li {
 }
 
 .sideboxmain:hover {
-    background-color: #e34e38;
+    background-color: #2563eb;
 }
 
 .sideboxmain:hover img {
@@ -2376,7 +2376,7 @@ ul.errorlist ul.errorlist li {
 }
 
 .sideboxmain.active {
-    background-color: #e34e38;
+    background-color: #2563eb;
 }
 
 .sideboxmain img, .sideboxmain svg {
@@ -2411,7 +2411,7 @@ ul.errorlist ul.errorlist li {
     position: absolute;
     width: 2px;
     height: 100%;
-    background-color: #e34e38;
+    background-color: #2563eb;
     opacity: 0;
     inset: 0;
     right: 0;
@@ -2421,8 +2421,8 @@ ul.errorlist ul.errorlist li {
 
 .sidebox ul li a:hover {
     background: rgb(227 78 56 / 10%);
-    color: #e34e38;
-    /* border-right: 2px solid #e54f38; */
+    color: #2563eb;
+    /* border-right: 2px solid #2563eb; */
 }
 
 .sidebox ul li a:hover:after,
@@ -2432,7 +2432,7 @@ ul.errorlist ul.errorlist li {
 
 .sidebox ul li a.active {
     background: rgb(227 78 56 / 10%);
-    color: #e34e38;
+    color: #2563eb;
 }
 
 .oh-permission-panel,
@@ -3426,8 +3426,8 @@ span.oh-activity-sidebar__a img {
 }
 
 .oh-modal__dialog--custom .oh-general__tab .oh-general__tab-link--active {
-    background-color: #e54f38;
-    border: 1px solid #e54f38;
+    background-color: #2563eb;
+    border: 1px solid #2563eb;
     color: #fff;
     padding: 5px 12px;
     border-radius: 23px;
@@ -3464,7 +3464,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #e54f38;
+    background: #2563eb;
     /* 🔴 Thumb color */
     cursor: pointer;
     margin-top: -7px;
@@ -3484,7 +3484,7 @@ input[type=range]::-moz-range-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #e54f38;
+    background: #2563eb;
     cursor: pointer;
     border: none;
 }
@@ -3500,7 +3500,7 @@ input[type=range]::-ms-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #e54f38;
+    background: #2563eb;
     cursor: pointer;
     border: none;
 }
