@@ -2,11 +2,12 @@
 base.py — Main Django settings for Horilla
 """
 
+ 
 import os
 from datetime import timedelta
 from os.path import join
 from pathlib import Path
-
+from urllib.parse import urlparse
 import environ
 from django.contrib.messages import constants as messages
 from django.core.files.storage import FileSystemStorage
@@ -150,17 +151,28 @@ ROOT_URLCONF = "horilla.urls"
 # ========================================
 # DATABASE CONFIGURATION
 # ========================================
-if env("DATABASE_URL", default=None):
-    DATABASES = {"default": env.db()}
-else:
+if 'DATABASE_URL' in os.environ:
+    db_url = urlparse(os.environ['DATABASE_URL'])
     DATABASES = {
-        "default": {
-            "ENGINE": env("DB_ENGINE", default="django.db.backends.sqlite3"),
-            "NAME": env("DB_NAME", default=os.path.join(BASE_DIR, "TestDB.sqlite3")),
-            "USER": env("DB_USER", default=""),
-            "PASSWORD": env("DB_PASSWORD", default=""),
-            "HOST": env("DB_HOST", default=""),
-            "PORT": env("DB_PORT", default=""),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': db_url.path[1:],  # Remove leading '/'
+            'USER': db_url.username,
+            'PASSWORD': db_url.password,
+            'HOST': db_url.hostname,
+            'PORT': db_url.port or 5432,
+        }
+    }
+else:
+    # Fallback to individual environment variables (for local dev)
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
+            'NAME': os.environ.get('DB_NAME', 'horilla_main'),
+            'USER': os.environ.get('DB_USER', 'horilla'),
+            'PASSWORD': os.environ.get('DB_PASSWORD', 'horilla'),
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
+            'PORT': os.environ.get('DB_PORT', '5432'),
         }
     }
 
