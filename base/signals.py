@@ -280,3 +280,69 @@ class Fail2BanMiddleware:
 
 
 settings.MIDDLEWARE.append("base.signals.Fail2BanMiddleware")
+
+
+# ========================================
+# CACHE INVALIDATION SIGNALS
+# ========================================
+from django.core.cache import cache
+from base.models import Company, TrackLateComeEarlyOut
+from employee.models import EmployeeGeneralSetting, ProfileEditFeature
+
+
+def invalidate_settings_cache(sender, **kwargs):
+    """
+    Invalidate all settings caches when any GeneralSetting model is saved.
+    """
+    cache.delete("ctx_all_general_settings")
+
+
+def invalidate_company_cache(sender, **kwargs):
+    """
+    Invalidate company cache when Company model changes.
+    """
+    cache.delete("ctx_companies_list")
+
+
+# Connect signals for cache invalidation
+post_save.connect(invalidate_company_cache, sender=Company)
+post_save.connect(invalidate_settings_cache, sender=TrackLateComeEarlyOut)
+post_save.connect(invalidate_settings_cache, sender=EmployeeGeneralSetting)
+post_save.connect(invalidate_settings_cache, sender=ProfileEditFeature)
+
+# Connect to other GeneralSettings models if they exist
+if apps.is_installed("offboarding"):
+    try:
+        OffboardingGeneralSetting = get_horilla_model_class(
+            app_label="offboarding", model="offboardinggeneralsetting"
+        )
+        post_save.connect(invalidate_settings_cache, sender=OffboardingGeneralSetting)
+    except:
+        pass
+
+if apps.is_installed("attendance"):
+    try:
+        AttendanceGeneralSetting = get_horilla_model_class(
+            app_label="attendance", model="attendancegeneralsetting"
+        )
+        post_save.connect(invalidate_settings_cache, sender=AttendanceGeneralSetting)
+    except:
+        pass
+
+if apps.is_installed("payroll"):
+    try:
+        PayrollGeneralSetting = get_horilla_model_class(
+            app_label="payroll", model="payrollgeneralsetting"
+        )
+        post_save.connect(invalidate_settings_cache, sender=PayrollGeneralSetting)
+    except:
+        pass
+
+if apps.is_installed("recruitment"):
+    try:
+        RecruitmentGeneralSetting = get_horilla_model_class(
+            app_label="recruitment", model="recruitmentgeneralsetting"
+        )
+        post_save.connect(invalidate_settings_cache, sender=RecruitmentGeneralSetting)
+    except:
+        pass
