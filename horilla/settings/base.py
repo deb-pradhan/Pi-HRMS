@@ -161,6 +161,8 @@ if 'DATABASE_URL' in os.environ:
             'PASSWORD': db_url.password,
             'HOST': db_url.hostname,
             'PORT': db_url.port or 5432,
+            'CONN_MAX_AGE': 60,  # Keep connections alive for 60 seconds
+            'CONN_HEALTH_CHECKS': True,
         }
     }
 else:
@@ -175,6 +177,43 @@ else:
             'PORT': os.environ.get('DB_PORT', '5432'),
         }
     }
+
+# ========================================
+# CACHING CONFIGURATION
+# ========================================
+REDIS_URL = os.environ.get('REDIS_URL')
+
+if REDIS_URL:
+    # Use Redis if available (Railway Redis add-on)
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': REDIS_URL,
+            'OPTIONS': {
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                'SOCKET_CONNECT_TIMEOUT': 5,
+                'SOCKET_TIMEOUT': 5,
+                'CONNECTION_POOL_KWARGS': {'max_connections': 50},
+                'IGNORE_EXCEPTIONS': True,
+            },
+            'KEY_PREFIX': 'pi_hrms',
+        }
+    }
+    # Use Redis for sessions too
+    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+    SESSION_CACHE_ALIAS = 'default'
+else:
+    # Fallback to local memory cache for development
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'pi-hrms-cache',
+        }
+    }
+
+# Cache timeouts (in seconds)
+CACHE_MIDDLEWARE_SECONDS = 60 * 15  # 15 minutes
+CACHE_MIDDLEWARE_KEY_PREFIX = 'pi_hrms'
 
 # ========================================
 # STATIC & MEDIA FILES
@@ -232,6 +271,15 @@ TEMPLATES = [
                 "base.context_processors.enable_profile_edit",
             ],
             "loaders": [
+                ("django.template.loaders.cached.Loader", [
+                    (
+                        "django.template.loaders.filesystem.Loader",
+                        [BASE_DIR / THEME_APP / "templates"],
+                    ),
+                    "django.template.loaders.app_directories.Loader",
+                    ("django.template.loaders.filesystem.Loader", [BASE_DIR / "templates"]),
+                ]),
+            ] if not DEBUG else [
                 (
                     "django.template.loaders.filesystem.Loader",
                     [BASE_DIR / THEME_APP / "templates"],
